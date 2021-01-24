@@ -1,8 +1,8 @@
 bin/EZModpacker: EZModpacker.cpp headers/Def.h headers/EZModpacker.h
 	g++ -o bin/EZModpacker EZModpacker.cpp -lcurl
 
-linuxinstall: bin/EZModpacker
+install: bin/EZModpacker
 	mv bin/EZModpacker /usr/bin/
 
-linuxuninstall:
+uninstall:
 	rm /usr/bin/EZModpacker
