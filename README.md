@@ -1,4 +1,4 @@
 # EZModpacker
- This is remake of EZModpacker-abandoned-
+ This is remake of EZModpacker
 
-Please Go to Wiki for more details
+Please go to Wiki for more details.
