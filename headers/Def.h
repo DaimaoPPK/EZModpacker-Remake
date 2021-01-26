@@ -60,7 +60,12 @@ void CurseForgeFix(std::string splittedline[]){
 }
 
 void ProcessReport(){
-
+    std::cout<<"----------------------------------------------------------------------\n";
+    std::cout<<"Process report:\n";
+    std::cout<<"----------------------------------------------------------------------\n";
+    std::cout<<"Created "<<dircount<<((dircount<=1)?" folder":" folders")<<'\n';
+    std::cout<<"Downloaded "<<dlcount<<((dlcount<=1)?" file":" files")<<'\n';
+    std::cout<<"----------------------------------------------------------------------\n"; 
 }
 
 void Interpret(){
@@ -73,12 +78,15 @@ void Interpret(){
     } else if (line[0] == '$'){
         curdir = modpackname+'/'+line.substr(1);
         makedir(curdir);
+        dircount++;
     } else if (line[0] == '>'){
         dlname = line.substr(1);
     } else if (line.substr(0, 4) == "http"){
         download(line, dlname);
+        dlcount++;
     } else if (line[0] == '!'){
         std::string arr[] = {split(line, '/').at(0), split(line, '/').at(1)};
         CurseForgeFix(arr);
+        dlcount++;
     }
 }
