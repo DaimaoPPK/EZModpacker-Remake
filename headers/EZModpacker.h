@@ -1,13 +1,13 @@
 #pragma once
 
 #ifdef __linux__
-#define MKDIR(dir) system(("mkdir "+dir).c_str())
+#define MKDIR(dir) system(("mkdir -p "+dir).c_str())
 #elif __unix || __unix__
-#define MKDIR(dir) system(("mkdir "+dir).c_str())
+#define MKDIR(dir) system(("mkdir -p "+dir).c_str())
 #elif __APPLE__ || __MACH__
-#define MKDIR(dir) system(("mkdir "+dir).c_str())
+#define MKDIR(dir) system(("mkdir -p "+dir).c_str())
 #elif __FreeBSD__
-#define MKDIR(dir) system(("mkdir "+dir).c_str())
+#define MKDIR(dir) system(("mkdir -p "+dir).c_str())
 #elif __WIN32 || __WIN64
 #include <direct.h>
 #define MKDIR(dir) mkdir(dir)
