@@ -66,6 +66,7 @@ void ProcessReport(){
     std::cout<<"Created "<<dircount<<((dircount<=1)?" folder":" folders")<<'\n';
     std::cout<<"Downloaded "<<dlcount<<((dlcount<=1)?" file":" files")<<'\n';
     std::cout<<"----------------------------------------------------------------------\n"; 
+    dircount, dlcount = 0;
 }
 
 void Interpret(){
