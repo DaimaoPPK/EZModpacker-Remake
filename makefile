@@ -1,4 +1,4 @@
-EZModpacker: EZModpacker.cpp headers/Def.hpp headers/EZModpacker.hpp
+EZModpacker: EZModpacker.cpp headers/Def.hpp headers/preprocessor.hpp
 	g++ -o EZModpacker EZModpacker.cpp -lcurl
 
 install: EZModpacker	
