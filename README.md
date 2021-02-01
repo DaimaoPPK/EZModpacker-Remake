@@ -1,4 +1,4 @@
-**Windows is no longer supported after 1.0.0
+### Windows is no longer supported after 1.0.0
 
 # EZModpacker
 
