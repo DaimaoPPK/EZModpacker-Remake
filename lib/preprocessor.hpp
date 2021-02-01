@@ -9,9 +9,6 @@
 #define MKDIR(dir) system(("mkdir -p "+dir).c_str())
 #elif __FreeBSD__
 #define MKDIR(dir) system(("mkdir -p "+dir).c_str())
-#elif __WIN32 || __WIN64
-#include <windows.h>
-#define MKDIR(dir) CreateDirectory((dir).c_str(), NULL)
 #else
 #error "Sorry but your OS is not supported. But don't worry, you just need to change a few stuffs in source code."
 #endif
