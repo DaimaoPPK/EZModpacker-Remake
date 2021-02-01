@@ -1,4 +1,6 @@
-#include "headers/preprocessor.hpp"
+#include "preprocessor.hpp"
+
+extern std::string line;
 
 int main(int argc, char const *argv[]){
     for (size_t i = 1; i < argc; i++)

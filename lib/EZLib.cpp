@@ -1,4 +1,5 @@
-#pragma once
+#include "preprocessor.hpp"
+#include "EZLib"
 
 std::string modpackname = "";
 std::string curdir = "";
@@ -7,18 +8,21 @@ std::string dlname = "";
 long dlcount;
 long dircount;
 
-std::vector<std::string> split(std::string line, char by);
-size_t write_data(void *ptr, size_t size, size_t nmemb, void *stream);
-void makedir();
-void download(std::string url, std::string output);
-void CurseForgeFix(std::string splittedline[]);
-void ProcessReport();
-void Interpret();
-
-std::vector<std::string> split(std::string line, char by){
-    std::vector<std::string> tokens;std::stringstream check0(line);std::string intermediate;
-    while(getline(check0, intermediate, by)) { tokens.push_back(intermediate); }
-    return tokens;
+std::vector<std::string> split(std::string stringToBeSplitted, std::string delimeter)
+{
+    std::vector<std::string> splittedString;
+    int startIndex = 0;
+    int  endIndex = 0;
+    while( (endIndex = stringToBeSplitted.find(delimeter, startIndex)) < stringToBeSplitted.size() ){       
+      std::string val = stringToBeSplitted.substr(startIndex, endIndex - startIndex);
+      splittedString.push_back(val);
+      startIndex = endIndex + delimeter.size();
+    }
+    if(startIndex < stringToBeSplitted.size()){
+      std::string val = stringToBeSplitted.substr(startIndex);
+      splittedString.push_back(val);
+    }
+    return splittedString;
 }
 
 size_t write_data(void *ptr, size_t size, size_t nmemb, void *stream){
@@ -66,7 +70,7 @@ void ProcessReport(){
     std::cout<<"Created "<<dircount<<((dircount<=1)?" folder":" folders")<<'\n';
     std::cout<<"Downloaded "<<dlcount<<((dlcount<=1)?" file":" files")<<'\n';
     std::cout<<"----------------------------------------------------------------------\n"; 
-    dircount, dlcount = 0;
+    dircount = 0; dlcount = 0;
 }
 
 void Interpret(){
@@ -86,7 +90,7 @@ void Interpret(){
         download(line, dlname);
         dlcount++;
     } else if (line[0] == '!'){
-        std::string arr[] = {split(line, '/').at(0), split(line, '/').at(1)};
+        std::string arr[] = {split(line, "/").at(0), split(line, "/").at(1)};
         CurseForgeFix(arr);
         dlcount++;
     }
