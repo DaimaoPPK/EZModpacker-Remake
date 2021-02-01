@@ -9,7 +9,6 @@ lib/EZLib.o: lib/EZLib.cpp lib/preprocessor.hpp lib/EZLib
 	g++ -fPIC -O -g -c -o lib/EZLib.o lib/EZLib.cpp
 
 installer/EZInstaller: installer/EZInstaller.cpp installer/preprocessor.hpp
-	g++ -o installer/EZInstaller installer/EZInstaller.cpp -lEZLib -lcurl
 
 installinst: installer/EZInstaller
 	mv installer/EZInstaller ${binpath}/
